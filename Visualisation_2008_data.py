@@ -50,14 +50,17 @@ print(a.hour)
 print(a.minute)
 print(a.hour,":",a.minute)
 '''
-
+'''
 #Modifier le nom d'une colonne
-'''myList = list(df_slice.columns)
+myList = list(df_slice.columns)
 myList[2] = 'Day'
-df_slice.columns = myList'''
+df_slice.columns = myList
 
+#Créer une colonne "Start_Date"
 df_slice["Start_Date"] = pd.to_datetime(df_slice[['Year','Month', 'Day']])
+'''
 
+'''
 conserve=""
 def convertHourMinute(s):
     print(type(s))
@@ -65,18 +68,32 @@ def convertHourMinute(s):
         s=str(s)
     if len(s)<2:
         s=s+"0"
+    #if len(s)==2:
+        
     print(type(s))
-    temporaire = pd.to_datetime(s.object(), format='%H%M')
+    temporaire = pd.to_datetime(s, format='%H%M',errors='raise')
     if type(temporaire) is str:
         conserve = temporaire
         print(conserve)
     else:
         return temporaire.hour,temporaire.minute
 
-convertHourMinute(24)
+convertHourMinute(900)
+'''
 
-df_slice['DepTime']=df_slice['DepTime'].astype(object)
-df_slice['hour']=df_slice['DepTime'].apply(lambda x : convertHourMinute(x))
-#df_slice['hour']=df_slice['DepTime'].apply(lambda x : pd.to_datetime(x, format='%H%M'))
 
-#df_slice['minute']=df_slice['DepTime'].apply(lambda x : convertHourMinute(x)[1])
+def findHour(s):
+    s=int(s)
+    if (len(str(s)))>=3:
+        return s//100
+    
+    if (len(str(s)))==2 and s<24:
+        return s
+    
+    if (len(str(s)))==2 and s>24:
+        return s//10
+
+findHour(1829.0)
+
+#df_slice['DepTime']=df_slice['DepTime'].astype(object)
+df_slice['hour']=df_slice['DepTime'].apply(lambda x : findHour(x))
