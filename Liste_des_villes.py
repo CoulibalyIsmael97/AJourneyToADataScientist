@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-'''
+
 df_slice_modified_add_city=pd.read_csv('2008_1_modified_add_city.csv')
 a=df_slice_modified_add_city['City'].value_counts()
 
@@ -53,20 +53,4 @@ initial=pd.DataFrame({'Id':[1,2,3,4,5,6,7,8,9],
                     'Prenom': ['Y', 'Ab', 'F', 'W', 'Au', 'N','F','Dr','A']})
 
 initial['Naissance']=df['Naissance'].values
-
-'''df=pd.merge(df,df1, how = 'left',on=['Nom', 'Prenom'])
-#df=df.fillna(0)
-dfMerge1=df.copy()
-
-df=pd.merge(df,df2, how = 'left',on=['Nom', 'Prenom'])
-#df=df.fillna(0)
-dfMerge2=df.copy()
-
-df=pd.merge(df,df3, how = 'left',on=['Nom', 'Prenom'])
-#df=df.fillna(0)
-dfMerge3=df.copy()
-
-df=df.dropna()
-
-df.reset_index(drop = True, inplace = True)
 '''
