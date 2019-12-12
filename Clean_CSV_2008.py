@@ -11,10 +11,9 @@ import matplotlib.pyplot as plt
 
 df=pd.read_csv('2008_1_modified_add_x_time.csv')
 
-df=df.drop(['FlightNum', 'TailNum', 'TaxiIn', 'TaxiOut', 'Cancelled', 'CancellationCode', 'Diverted'], axis = 1) 
-
+df=df.drop(['FlightNum', 'TaxiIn', 'TaxiOut', 'Cancelled', 'CancellationCode', 'Diverted'], axis = 1) 
 df = df.dropna()
-df.to_csv('Clean_2008.csv',index = False)
+#df.to_csv('Clean_2008_v2.csv',index = False)
 
 # Créer une nouvelle fonction qui détermine si la valeur en paramètre est manquante:
 def num_missing(x):
