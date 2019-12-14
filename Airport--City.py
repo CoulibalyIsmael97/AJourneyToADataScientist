@@ -43,7 +43,7 @@ dataAirportAndCity.columns=['Origin','City']#Renommer les colonnes pour pouvoir 
 df_slice_modified_add_city=pd.merge(df_slice_modified,dataAirportAndCity)
 
 #Création et Sauvegarde du dataset dans un fichier
-df_slice_modified_add_city.to_csv('2008_1_modified_add_city.csv',index = False)
+#df_slice_modified_add_city.to_csv('2008_1_modified_add_city.csv',index = False)
 
 #La liste des villes (concernant les dataset à téléchager)
 listOfCity=[]
